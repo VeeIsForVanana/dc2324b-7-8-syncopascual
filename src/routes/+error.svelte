@@ -1,7 +1,8 @@
 <script>
-    import { page } from '$app/stores'
+    import { page } from '$app/stores';
+    $: ({ status } = $page);
 </script>
 
-<h1>{$page.status} {$page.error?.message}</h1>
+<h1>{status} {$page.error?.message}</h1>
 
-<img alt={`cat but ${$page.status}`} src={`https://http.cat/${$page.status}`} />
+<img alt="cat but {status}" src="https://http.cat/{status}" />
