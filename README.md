@@ -8,7 +8,7 @@ By this point, you should have finished reading up on Modules 7 + 8 covering the
 
 ```
 7 - Welcome to SvelteKit
-	
+
     Routing
 		* Pages
 		* Layouts
@@ -17,11 +17,11 @@ By this point, you should have finished reading up on Modules 7 + 8 covering the
 		* The $lib alias
 
 8 - Endpoints
-	
+
     Headers and cookies
 		* Setting headers
 		* Reading and writing cookies
-	Forms 
+	Forms
 		* The <form> element
 		* Named form actions
 		* Validation
@@ -35,28 +35,29 @@ By this point, you should have finished reading up on Modules 7 + 8 covering the
 
 It is also advised that, in addition to these topics, you familiarize yourself with these additional topics which will be helpful in this exercise
 
-- [The Javascript `fetch` API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
-- [`async` functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
-- [The GitHub REST API](https://docs.github.com/en/rest?apiVersion=2022-11-28) (Note that we will be using the public API without authentication)
-	- Specifically of interest to us for this assignment are the [List Users](https://docs.github.com/en/rest?apiVersion=2022-11-28) and [Get a User](https://docs.github.com/en/rest?apiVersion=2022-11-28) endpoints.
-- TypeScript (a variant of JavaScript that introduces the notion of types), specifially the [type aliases](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-aliases) feature
-	- It should be noted for those unfamiliar with TypeScript, that it is practically like programming with JavaScript. Type aliases (as in declarations with the keyword `type`) were mainly used to solidly define certain types of objects during the development of this project.
+-   [The Javascript `fetch` API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+-   [`async` functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+-   [The GitHub REST API](https://docs.github.com/en/rest?apiVersion=2022-11-28) (Note that we will be using the public API without authentication)
+    -   Specifically of interest to us for this assignment are the [List Users](https://docs.github.com/en/rest?apiVersion=2022-11-28) and [Get a User](https://docs.github.com/en/rest?apiVersion=2022-11-28) endpoints.
+-   TypeScript (a variant of JavaScript that introduces the notion of types), specifially the [type aliases](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-aliases) feature
+    -   It should be noted for those unfamiliar with TypeScript, that it is practically like programming with JavaScript. Type aliases (as in declarations with the keyword `type`) were mainly used to solidly define certain types of objects during the development of this project.
 
 > [!TIP]
 > In case REST APIs are new to you, it might also be useful to read up on those too. We will only be making use of GET request endpoints in this assignment; however.
 
 ## Preliminaries
 
-At this point, this should be your first (in DevCamp, if not in your entire programming life) experience with SvelteKit. 
+At this point, this should be your first (in DevCamp, if not in your entire programming life) experience with SvelteKit.
 
 Upon locally cloning this repository, please execute
 
 ```
 npm install
 ```
+
 Inside the repository's directory in order to install the SvelteKit framework.
 
-Then, you'll need to install [Playwright](https://playwright.dev/) using 
+Then, you'll need to install [Playwright](https://playwright.dev/) using
 
 ```
 npx playwright install
@@ -87,9 +88,9 @@ The finished project should look like the GIF demonstration below.
 Formally, your finished assignment should accomplish the following:
 
 1. Load and link to **at least 10 GitHub users** on the homepage
-2. Be capable of generating **a page for *any* publicly visible GitHub user** consisting of their *username* (as a header) and their *avatar* (as an image) 
-3. Keep track of all previously visited users (a *history*, if you will), storing this information as **a comma-delimited string** in a *cookie* (note that repeat visits are repeated in history)
-4. Display the history on every user page as a ' >> ' delimited *paragraph*, where every username in the history is a link to the corresponding user page
+2. Be capable of generating **a page for _any_ publicly visible GitHub user** consisting of their _username_ (as a header) and their _avatar_ (as an image)
+3. Keep track of all previously visited users (a _history_, if you will), storing this information as **a comma-delimited string** in a _cookie_ (note that repeat visits are repeated in history)
+4. Display the history on every user page as a ' >> ' delimited _paragraph_, where every username in the history is a link to the corresponding user page
 5. Provide a **button** to clear this history, displayed on all user pages
 
 > [!CAUTION]
@@ -99,8 +100,8 @@ You may implement additional features, as long as they do not conflict with the 
 
 ## The Rate Limit
 
-It should be noted that the GitHub Public API, like most APIs, is not solely for our consumption. Much less so for unauthenticated users. Thus, there is a [limit to the number of API calls we can perform in a given period of time](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28). 
+It should be noted that the GitHub Public API, like most APIs, is not solely for our consumption. Much less so for unauthenticated users. Thus, there is a [limit to the number of API calls we can perform in a given period of time](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28).
 
 All API calls such as those we will be using for this assignment, **including the calls that the tests themselves make (~20 per full test run)** are included in this limit. Please budget your calls wisely.
 
-Furthermore, while it is not prohibited to use authentication tokens to take advantage of a higher rate limit (though it should be noted this assignment was made without taking advantage of this), [please be careful with your sensitive data](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository), *especially when pushing to GitHub*.
+Furthermore, while it is not prohibited to use authentication tokens to take advantage of a higher rate limit (though it should be noted this assignment was made without taking advantage of this), [please be careful with your sensitive data](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository), _especially when pushing to GitHub_.
