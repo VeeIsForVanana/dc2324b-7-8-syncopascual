@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
     // TODO: what goes here?
 </script>
 
