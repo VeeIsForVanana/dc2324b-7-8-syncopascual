@@ -24,9 +24,14 @@ export function jsonToUser(json) {
 
     // Assert that the fields are what we expected
     const { id, login, user_url, avatar_url } = json;
-    assert(typeof id === 'string', 'expected string id');
+    assert(typeof id === 'number', 'expected string id');
     assert(typeof login === 'string', 'expected string login');
-    assert(typeof user_url === 'string', 'expected url user_url');
-    assert(typeof avatar_url === 'string', 'expected url avatar_url');
-    return { id, login, user: new URL(user_url), avatar: new URL(avatar_url) };
+
+    assert(typeof user_url === 'string', 'expected string user_url');
+    assert(URL.canParse(user_url), 'expected url user_url');
+
+    assert(typeof avatar_url === 'string', 'expected string avatar_url');
+    assert(URL.canParse(avatar_url), 'expected url avatar_url');
+
+    return { id, login, user: user_url, avatar: avatar_url };
 }
