@@ -1,0 +1,61 @@
+name: Autograding Tests
+'on':
+- push
+- workflow_dispatch
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Test 0
+      id: test-0
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: Test 0
+        setup-command: npm install && npx playwright install
+        command: npx playwright test test0
+        timeout: 5
+        max-score: 10
+    - name: Test 1
+      id: test-1
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: Test 1
+        setup-command: npm install && npx playwright install
+        command: npx playwright test test1
+        timeout: 5
+        max-score: 10
+    - name: Test 2
+      id: test-2
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: Test 2
+        setup-command: npm install && npx playwright install
+        command: npx playwright test test2
+        timeout: 5
+        max-score: 35
+    - name: Test 3
+      id: test-3
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: Test 3
+        setup-command: npm install && npx playwright install
+        command: npx playwright test test3
+        timeout: 5
+        max-score: 45
+    - name: Autograding Reporter
+      uses: education/autograding-grading-reporter@v1
+      env:
+        TEST-0_RESULTS: "${{steps.test-0.outputs.result}}"
+        TEST-1_RESULTS: "${{steps.test-1.outputs.result}}"
+        TEST-2_RESULTS: "${{steps.test-2.outputs.result}}"
+        TEST-3_RESULTS: "${{steps.test-3.outputs.result}}"
+      with:
+        runners: test-0,test-1,test-2,test-3
