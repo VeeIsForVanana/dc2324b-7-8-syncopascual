@@ -19,19 +19,19 @@ export function jsonToUser(json) {
     // Check the properties inside the JSON
     assert('id' in json, 'id is missing');
     assert('login' in json, 'login is missing');
-    assert('user_url' in json, 'user_url is missing');
+    assert('html_url' in json, 'html_url is missing');
     assert('avatar_url' in json, 'avatar_url is missing');
 
     // Assert that the fields are what we expected
-    const { id, login, user_url, avatar_url } = json;
+    const { id, login, html_url, avatar_url } = json;
     assert(typeof id === 'number', 'expected string id');
     assert(typeof login === 'string', 'expected string login');
 
-    assert(typeof user_url === 'string', 'expected string user_url');
-    assert(URL.canParse(user_url), 'expected url user_url');
+    assert(typeof html_url === 'string', 'expected string html_url');
+    assert(URL.canParse(html_url), 'expected url html_url');
 
     assert(typeof avatar_url === 'string', 'expected string avatar_url');
     assert(URL.canParse(avatar_url), 'expected url avatar_url');
 
-    return { id, login, user: user_url, avatar: avatar_url };
+    return { id, login, user: html_url, avatar: avatar_url };
 }
